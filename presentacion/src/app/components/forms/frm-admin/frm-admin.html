@@ -1,0 +1,67 @@
+<h2 mat-dialog-title>Formulario Admin</h2>
+<mat-dialog-content>
+    <form id="miFormulario" [formGroup]="myForm" (ngSubmit)="onGuardar();">
+        <div class="flex flex-col">
+            <mat-form-field>
+                <mat-label>Id Admin</mat-label>
+                <input formControlName="idAdmin" matInput type="text" >
+            </mat-form-field>
+
+            <div class="md:flex justify-between">
+
+                <mat-form-field class="w-full md:w-fit">
+                    <mat-label>Nombre</mat-label>
+                    <input formControlName="nombre" matInput type="text" >
+                </mat-form-field>
+
+                <mat-form-field class="w-full md:w-fit">
+                    <mat-label>Apellido 1</mat-label>
+                    <input formControlName="apellido1" matInput type="text" >
+                </mat-form-field>
+
+                <mat-form-field class="w-full md:w-fit">
+                    <mat-label>Apellido 2</mat-label>
+                    <input formControlName="apellido2" matInput type="text" >
+                </mat-form-field>
+
+            </div>
+            @if(F['nombre'].invalid && F['nombre'].touched){
+                @if(F['nombre'].errors!['required']){
+                    <small class="text-red-600">El nombre es obligatorio</small>
+                }
+                @if(F['nombre'].errors!['minlength']){
+                    <small class="text-red-600">Nombre demasiado corto</small>
+                }
+                @if(F['nombre'].errors!['maxlength']){
+                    <small class="text-red-600">Nombre demasiado largo</small>
+                }
+                @if(F['nombre'].errors!['pattern']){
+                    <small class="text-red-600">Formato de nombre no válido</small>
+                }
+            }
+
+            <mat-form-field>
+                <mat-label>Telefono</mat-label>
+                <input formControlName="telefono" matInput type="text" >
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Celular</mat-label>
+                <input formControlName="celular" matInput type="text" >
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Correo</mat-label>
+                <input formControlName="correo" matInput type="text" >
+            </mat-form-field>
+ 
+        </div>
+        <input type="hidden" formControlName="id">
+
+    </form>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button type="submit" form="miFormulario" mat-button><mat-icon>save</mat-icon> Guardar</button>
+    <button mat-button [mat-dialog-close]="false"><mat-icon>cancel</mat-icon>Cerrar</button>
+</mat-dialog-actions>

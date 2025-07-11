@@ -1,0 +1,70 @@
+//@uri2 = http://localhost:8000/api/admin
+//@token = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE3NDkyMjY0MjMsImV4cCI6MTc0OTIzMDAyMywic3ViIjoiOCIsInJvbCI6IjQiLCJub20iOiJEeWxhbiJ9.CxN62Oz5XAlrKPpCfaKlsU831PZ0cr8XC49bDJ70SN0
+
+
+//GET {{uri2}}/1
+
+
+###
+
+//POST {{uri2}}
+//Content-Type: application/json
+//
+//{
+//	"idAdmin": 1,
+//	"nombre": "A",
+//	"apellido1": "z",
+//	"apellido2": "r",
+//	"telefono": "87885",
+//	"celular": "8",
+//	"correo": "ad@gmail.com"
+//}
+
+###
+@uri = http://localhost:8000/api/cliente
+@token = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3ZWJkYXRvcyIsImlhdCI6MTc1MjE5NDc0NSwicm9sIjoiMyIsIm5vbSI6IkNhcmxvcyJ9.NHTs2NLren1EyH5USiambwvvGHn0AWXRiYtPECPGxy8
+
+### Obtener un cliente por ID
+GET {{uri}}/1
+Authorization: {{token}}
+
+### Crear nuevo cliente
+POST {{uri}}
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+    "idCliente": "cliente20",
+    "nombre": "Kevin",
+    "apellido1": "Jimenez",
+    "apellido2": "Soto",
+    "telefono": "22222222",
+    "celular": "83333333",
+    "direccion": "Cartago centro",
+    "correo": "kevin@gmail.com"
+}
+
+### Editar cliente
+PUT {{uri}}/1
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+    "idCliente": "cliente1",
+    "nombre": "Carlos",
+    "apellido1": "Ramirez",
+    "apellido2": "Gomez",
+    "telefono": "11111111",
+    "celular": "88888888",
+    "direccion": "San José",
+    "correo": "carlos@gmail.com"
+}
+
+### Eliminar cliente
+DELETE {{uri}}/1
+Authorization: {{token}}
+
+### Filtrar clientes
+GET {{uri}}/filtrar/0/100?idCliente=cliente1
+Authorization: {{token}}
+

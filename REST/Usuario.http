@@ -1,0 +1,39 @@
+@uri = http://localhost:8000/api/usr
+
+
+GET {{uri}}/1
+
+###
+
+PATCH {{uri}}/change/1111
+Content-Type: application/json
+{
+  "passw": "cliente1",
+  "passwN": "123456"
+}
+
+###
+PATCH {{uri}}/reset/1111
+
+
+PATCH /api/auth
+{
+  "idUsuario": "cliente1",
+  "passw": "123456"
+}
+
+
+### LOGIN CLIENTE
+PATCH http://localhost:9000/api/auth
+Content-Type: application/json
+
+{
+  "idUsuario": "cliente1",
+  "passw": "123456"
+}
+
+
+
+
+
+

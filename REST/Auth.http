@@ -1,0 +1,44 @@
+@uri = http://localhost:8000/api/auth
+
+PATCH {{uri}}
+Content-Type: application/json
+
+{
+  "idUsuario": "112224",
+  "passw": "112224"
+}
+
+###
+
+DELETE {{uri}}/8
+
+###
+
+PATCH {{uri}}/refresh
+Content-Type: application/json
+
+{
+  "idUsuario": "8",
+  "tkRef": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE3NDkyMjY0NjUsInJvbCI6IjQiLCJub20iOiJEeWxhbiJ9.buAhNvQdF9w3VxnHgbsFWiqYas7lA164sNdmczLctNY"
+  
+}
+###
+
+PATCH {{uri}}/change/1111
+Content-Type: application/json
+
+{
+  "idUsuario": "1111",
+  "passw": "12345"
+}
+
+
+### LOGIN TEST PATCH
+PATCH http://localhost:8000/api/auth
+Content-Type: application/json
+
+{
+  "idUsuario": "123456",
+  "passw": "123456"
+}
+

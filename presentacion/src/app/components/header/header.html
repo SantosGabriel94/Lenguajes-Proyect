@@ -1,0 +1,25 @@
+<header class="h-13 flex items-center justify-between px-4 bg-blue-950 text-white">
+    <div class="empresa flex">
+        <mat-icon>android</mat-icon>
+        <div class="titulo">RepairWorks</div>
+    </div>
+    <div class="me-4 flex">
+        <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger class="me-4 cursor-pointer
+            px-1.25 py-0.5 rounded-full hover:bg-blue-800 active:border-2 active:border-blue-600">
+            <mat-icon>person</mat-icon>
+        </button>
+        <span>{{srvAuth.userActualS().nombre}}</span>
+    </div>
+    <mat-menu #menu="matMenu">
+        @if(srvAuth.userActualS().rol === -1){
+            <button mat-menu-item [routerLink]="['/login']">Iniciar Sesión</button>
+        
+        }
+        @else {
+            <button mat-menu-item (click)="loggOut();">Cerrar Sesión</button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item (click)="changePassword()">Cambiar Contraseña</button>
+        }
+        
+    </mat-menu>
+</header>

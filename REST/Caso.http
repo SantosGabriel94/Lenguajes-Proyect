@@ -1,0 +1,262 @@
+### API REST - Casos de Taller
+### Servidor: localhost
+@baseUrl = http://localhost:8000/api/caso
+
+### Variables de ejemplo basadas en los datos existentes
+@idCaso1 = 1
+@idCaso2 = 2
+@idArtefacto1 = "12345s"
+@idArtefacto3 = "123ddd"
+@idArtefacto7 = 7
+@idTecnico = 999
+@idCreador = 5659
+@idCliente = 30
+
+### =========================================
+### 1. LISTAR CASOS (GET /caso)
+### =========================================
+GET {{baseUrl}}
+Content-Type: application/json
+
+### =========================================
+### 2. CREAR NUEVO CASO (POST /caso)
+### =========================================
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+    "idTecnico": "{{idTecnico}}",
+    "idCreador": "{{idCreador}}",
+    "idArtefacto": {{idArtefacto3}},
+    "descripcion": "Artefacto no funciona - Revisar componentes internos"
+}
+
+### =========================================
+### 3. CREAR OTRO CASO (POST /caso)
+### =========================================
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+    "idTecnico": "{{idTecnico}}",
+    "idCreador": "{{idCreador}}",
+    "idArtefacto": {{idArtefacto1}},
+    "descripcion": "Artefacto no funciona - Revisar componentes internos"
+}
+
+### =========================================
+### 4. BUSCAR CASO ESPECÍFICO (GET /caso/{codigo})
+### =========================================
+GET {{baseUrl}}/{{idCaso1}}
+Content-Type: application/json
+
+### =========================================
+### 5. BUSCAR OTRO CASO (GET /caso/{codigo})
+### =========================================
+GET {{baseUrl}}/{{idCaso2}}
+Content-Type: application/json
+
+### =========================================
+### 6. ACTUALIZAR CASO (PUT /caso/{codigo})
+### =========================================
+PUT {{baseUrl}}/{{idCaso1}}
+Content-Type: application/json
+
+{
+    "idTecnico": "{{idTecnico}}",
+    "idCreador": "{{idCreador}}",
+    "idArtefacto": {{idArtefacto1}},
+    "descripcion": "Artefacto parece funcionar - Revisar componentes internos"
+}
+
+### =========================================
+### 7. FILTRAR CASOS CON PAGINACIÓN (GET /caso/filtrar/{pag}/{lim})
+### =========================================
+GET {{baseUrl}}/filtrar/0/10
+Content-Type: application/json
+
+### =========================================
+### 8. FILTRAR CASOS POR CÓDIGO (GET /caso/filtrar/{pag}/{lim})
+### =========================================
+GET {{baseUrl}}/filtrar/0/10?codigo={{idCaso1}}
+Content-Type: application/json
+
+### =========================================
+### 9. FILTRAR CASOS POR TÉCNICO (GET /caso/filtrar/{pag}/{lim})
+### =========================================
+GET {{baseUrl}}/filtrar/0/10?idTecnico={{idTecnico}}
+Content-Type: application/json
+
+### =========================================
+### 10. FILTRAR CASOS POR DESCRIPCIÓN (GET /caso/filtrar/{pag}/{lim})
+### =========================================
+GET {{baseUrl}}/filtrar/0/10?descripcion=Celular
+Content-Type: application/json
+
+### =========================================
+### 11. FILTRAR CASOS COMBINADO (GET /caso/filtrar/{pag}/{lim})
+### =========================================
+GET {{baseUrl}}/filtrar/0/10?codigo={{idCaso1}}&idTecnico={{idTecnico}}
+Content-Type: application/json
+
+### =========================================
+### 12. CONSULTAR ESTADO DE CASO (GET /caso/estado/{codigo})
+### =========================================
+GET {{baseUrl}}/estado/1
+Content-Type: application/json
+
+### =========================================
+### 13. CAMBIAR ESTADO A DIAGNOSTICADO (POST /caso/estado/{codigo})
+### =========================================
+POST {{baseUrl}}/estado/{{idCaso1}}
+Content-Type: application/json
+
+{
+    "estado": 1,
+    "idResponsable": "{{idTecnico}}",
+    "descripcion": "Diagnóstico completado - Requiere cambio de componente"
+}
+
+### =========================================
+### 14. CAMBIAR ESTADO A EN ESPERA DE APROBACIÓN (POST /caso/estado/{codigo})
+### =========================================
+POST {{baseUrl}}/estado/{{idCaso1}}
+Content-Type: application/json
+
+{
+    "estado": 2,
+    "idResponsable": "{{idTecnico}}",
+    "descripcion": "Presupuesto enviado al cliente para aprobación"
+}
+
+### =========================================
+### 15. CAMBIAR ESTADO A REPARADO (POST /caso/estado/{codigo})
+### =========================================
+POST {{baseUrl}}/estado/{{idCaso1}}
+Content-Type: application/json
+
+{
+    "estado": 4,
+    "idResponsable": "{{idTecnico}}",
+    "descripcion": "Reparación completada exitosamente"
+}
+
+### =========================================
+### 16. CAMBIAR ESTADO A ENTREGADO (POST /caso/estado/{codigo})
+### =========================================
+POST {{baseUrl}}/estado/{{idCaso1}}
+Content-Type: application/json
+
+{
+    "estado": 6,
+    "idResponsable": "{{idTecnico}}",
+    "descripcion": "Artefacto entregado al cliente"
+}
+
+### =========================================
+### 17. OBTENER CASOS POR CLIENTE (GET /caso/cliente/{idCliente})
+### =========================================
+GET {{baseUrl}}/cliente/30
+Content-Type: application/json
+
+### =========================================
+### 17.1. OBTENER CASOS POR CLIENTE CON FILTROS (GET /caso/cliente/{idCliente})
+### =========================================
+GET {{baseUrl}}/cliente/30?descripcion=Artefacto
+Content-Type: application/json
+
+### =========================================
+### 18. OBTENER CASOS POR TÉCNICO (GET /caso/tecnico/{idTecnico})
+### =========================================
+GET {{baseUrl}}/tecnico/5657
+Content-Type: application/json
+
+### =========================================
+### 18.1. OBTENER CASOS POR TÉCNICO CON FILTROS (GET /caso/tecnico/{idTecnico})
+### =========================================
+GET {{baseUrl}}/tecnico/{{idTecnico}}?descripcion=Artefacto
+Content-Type: application/json
+
+### =========================================
+### 19. OBTENER HISTORIAL DE CASO (GET /caso/historial/{codigo})
+### =========================================
+GET {{baseUrl}}/historial/1
+Content-Type: application/json
+
+### =========================================
+### 20. OBTENER HISTORIAL DE OTRO CASO (GET /caso/historial/{codigo})
+### =========================================
+GET {{baseUrl}}/historial/2
+Content-Type: application/json
+
+### =========================================
+### 21. INTENTAR ELIMINAR CASO (DELETE /caso/{codigo})
+### =========================================
+### Nota: Puede fallar si el caso tiene historial activo
+DELETE {{baseUrl}}/{{idCaso2}}
+Content-Type: application/json
+
+### =========================================
+### 22. CREAR CASO PARA PRUEBAS DE ELIMINACIÓN (POST /caso)
+### =========================================
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+    "idTecnico": "{{idTecnico}}",
+    "idCreador": "{{idCreador}}",
+    "idArtefacto": {{idArtefacto3}},
+    "descripcion": "Caso de prueba para eliminación"
+}
+
+### =========================================
+### CASOS DE ERROR - PARA PROBAR VALIDACIONES
+### =========================================
+
+### 23. CREAR CASO CON ARTEFACTO INEXISTENTE (POST /caso)
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+    "idTecnico": "{{idTecnico}}",
+    "idCreador": "{{idCreador}}",
+    "idArtefacto": 999,
+    "descripcion": "Este caso debería fallar - artefacto inexistente"
+}
+
+### 24. BUSCAR CASO INEXISTENTE (GET /caso/{codigo})
+GET {{baseUrl}}/999
+Content-Type: application/json
+
+### 25. CAMBIAR ESTADO INVÁLIDO (POST /caso/estado/{codigo})
+POST {{baseUrl}}/estado/{{idCaso1}}
+Content-Type: application/json
+
+{
+    "estado": 10,
+    "idResponsable": "{{idTecnico}}",
+    "descripcion": "Estado inválido - debería fallar"
+}
+
+### 26. ACTUALIZAR CASO INEXISTENTE (PUT /caso/{codigo})
+PUT {{baseUrl}}/999
+Content-Type: application/json
+
+{
+    "idTecnico": "{{idTecnico}}",
+    "descripcion": "Este caso no existe"
+}
+
+### =========================================
+### ESTADOS DE CASO (REFERENCIA)
+### =========================================
+###
+### 0 - Aceptado
+### 1 - Diagnosticado  
+### 2 - En espera de aprobación
+### 3 - En espera de repuesto
+### 4 - Reparado
+### 5 - Sin solución
+### 6 - Entregado
+###
+### =========================================

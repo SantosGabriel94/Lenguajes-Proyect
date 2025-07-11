@@ -1,0 +1,25 @@
+@uri = http://localhost:8000/api/cliente
+@token = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE3NDkyMjY0MjMsImV4cCI6MTc0OTIzMDAyMywic3ViIjoiOCIsInJvbCI6IjQiLCJub20iOiJEeWxhbiJ9.CxN62Oz5XAlrKPpCfaKlsU831PZ0cr8XC49bDJ70SN0
+
+
+GET {{uri}}/1
+
+
+
+###
+
+POST {{uri}}
+Content-Type: application/json
+Authorization: {{token}}
+
+	{
+		"idCliente": 20,
+		"nombre": "L",
+		"apellido1": "Na",
+		"apellido2": "Pereira",
+		"telefono": "88885888",
+		"celular": "88888",
+		"direccion": "Blanco",
+		"correo": "luisito@gmail.com"
+	}
+

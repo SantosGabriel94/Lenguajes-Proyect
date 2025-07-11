@@ -1,0 +1,115 @@
+<h2 mat-dialog-title>{{titulo}}</h2>
+<mat-dialog-content>
+    <form id="miFormulario" [formGroup]="myForm" (ngSubmit)="onGuardar();">
+        <div class="flex flex-col">
+            <mat-form-field>
+                <mat-label>ID Cliente</mat-label>
+                <input formControlName="idCliente" matInput type="number" placeholder="ID del cliente propietario">
+            </mat-form-field>
+            @if(F['idCliente'].invalid && F['idCliente'].touched){
+                @if(F['idCliente'].errors!['required']){
+                    <small class="text-red-600">El ID del cliente es obligatorio</small>
+                }
+                @if(F['idCliente'].errors!['pattern']){
+                    <small class="text-red-600">Solo se permiten números</small>
+                }
+            }
+
+            <mat-form-field>
+                <mat-label>Serie</mat-label>
+                <input formControlName="serie" matInput type="text" placeholder="Número de serie único">
+            </mat-form-field>
+            @if(F['serie'].invalid && F['serie'].touched){
+                @if(F['serie'].errors!['required']){
+                    <small class="text-red-600">La serie es obligatoria</small>
+                }
+                @if(F['serie'].errors!['minlength']){
+                    <small class="text-red-600">Serie demasiado corta (mínimo 3 caracteres)</small>
+                }
+                @if(F['serie'].errors!['maxlength']){
+                    <small class="text-red-600">Serie demasiado larga (máximo 15 caracteres)</small>
+                }
+            }
+
+            <div class="md:flex justify-between">
+                <mat-form-field class="w-full md:w-fit">
+                    <mat-label>Marca</mat-label>
+                    <input formControlName="marca" matInput type="text" placeholder="Ej: Apple, Samsung">
+                </mat-form-field>
+
+                <mat-form-field class="w-full md:w-fit">
+                    <mat-label>Modelo</mat-label>
+                    <input formControlName="modelo" matInput type="text" placeholder="Ej: iPhone 13, Galaxy S21">
+                </mat-form-field>
+
+                <mat-form-field class="w-full md:w-fit">
+                    <mat-label>Categoría</mat-label>
+                    <input formControlName="categoria" matInput type="text" placeholder="Ej: Teléfono, Laptop">
+                </mat-form-field>
+            </div>
+
+            @if(F['marca'].invalid && F['marca'].touched){
+                @if(F['marca'].errors!['required']){
+                    <small class="text-red-600">La marca es obligatoria</small>
+                }
+                @if(F['marca'].errors!['minlength']){
+                    <small class="text-red-600">Marca demasiado corta</small>
+                }
+                @if(F['marca'].errors!['maxlength']){
+                    <small class="text-red-600">Marca demasiado larga</small>
+                }
+            }
+
+            @if(F['modelo'].invalid && F['modelo'].touched){
+                @if(F['modelo'].errors!['required']){
+                    <small class="text-red-600">El modelo es obligatorio</small>
+                }
+                @if(F['modelo'].errors!['minlength']){
+                    <small class="text-red-600">Modelo demasiado corto</small>
+                }
+                @if(F['modelo'].errors!['maxlength']){
+                    <small class="text-red-600">Modelo demasiado largo</small>
+                }
+            }
+
+            @if(F['categoria'].invalid && F['categoria'].touched){
+                @if(F['categoria'].errors!['required']){
+                    <small class="text-red-600">La categoría es obligatoria</small>
+                }
+                @if(F['categoria'].errors!['minlength']){
+                    <small class="text-red-600">Categoría demasiado corta</small>
+                }
+                @if(F['categoria'].errors!['maxlength']){
+                    <small class="text-red-600">Categoría demasiado larga</small>
+                }
+            }
+
+            <mat-form-field>
+                <mat-label>Descripción</mat-label>
+                <textarea formControlName="descripcion" matInput rows="3" placeholder="Describe el artefacto y su estado"></textarea>
+            </mat-form-field>
+            @if(F['descripcion'].invalid && F['descripcion'].touched){
+                @if(F['descripcion'].errors!['required']){
+                    <small class="text-red-600">La descripción es obligatoria</small>
+                }
+                @if(F['descripcion'].errors!['minlength']){
+                    <small class="text-red-600">Descripción demasiado corta (mínimo 5 caracteres)</small>
+                }
+                @if(F['descripcion'].errors!['maxlength']){
+                    <small class="text-red-600">Descripción demasiado larga (máximo 50 caracteres)</small>
+                }
+            }
+
+        </div>
+        <input type="hidden" formControlName="id">
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button type="submit" form="miFormulario" [disabled]="myForm.invalid" mat-button>
+        <mat-icon>save</mat-icon> Guardar
+    </button>
+    <button mat-button [mat-dialog-close]="false">
+        <mat-icon>cancel</mat-icon>Cerrar
+    </button>
+</mat-dialog-actions>

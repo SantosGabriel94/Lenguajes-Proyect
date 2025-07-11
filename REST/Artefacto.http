@@ -1,0 +1,45 @@
+@uri = http://localhost:8000/api/artefacto
+
+
+GET {{uri}}/read
+###
+
+POST {{uri}}
+Content-Type: application/json
+
+{
+   "idCliente": 23,
+    "serie": "12",
+    "marca": "TLC",
+    "modelo": "Grande",
+    "categoria": "Pantalla",
+    "descripcion": "Pantalla G"
+}
+
+###
+DELETE {{uri}}/5
+
+###
+GET {{uri}}/filtrar/0/5
+
+###
+
+PUT {{uri}}/9
+Content-Type: application/json
+
+{
+    "idCliente": 15,
+    "serie": "asf43",
+    "marca": "Apple",
+    "modelo": "Iphone7",
+    "categoria": "Celular",
+    "descripcion": "Esta muy viejo"
+}
+
+###
+# Buscar un artefacto específico
+GET {{uri}}/9
+
+###
+# Leer todos los artefactos
+GET {{uri}}/read

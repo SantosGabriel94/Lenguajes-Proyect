@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>
+  <mat-icon>person</mat-icon> Login
+</h2>
+
+<mat-divider class="border-2"></mat-divider>
+
+<mat-dialog-content>
+  <form id="miFormulario" [formGroup]="frmLogin" (ngSubmit)="onLogin()">
+    <mat-form-field class="w-full">
+      <mat-label>Usuario</mat-label>
+      <input matInput formControlName="idUsuario" />
+    </mat-form-field>
+
+    <mat-form-field class="w-full">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" formControlName="passw" />
+    </mat-form-field>
+
+    @if (errorLogin()) {
+      <small class="text-red-600">Usuario o Contraseña no válida</small>
+    }
+
+    <input type="hidden" formControlName="id" />
+  </form>
+</mat-dialog-content>
+
+<mat-divider class="border-2"></mat-divider>
+
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" type="submit" form="miFormulario">
+    Aceptar
+  </button>
+</mat-dialog-actions>

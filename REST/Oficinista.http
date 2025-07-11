@@ -1,0 +1,25 @@
+@uri = http://localhost:8000/api/oficinista
+@token = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE3NDkyMjY0MjMsImV4cCI6MTc0OTIzMDAyMywic3ViIjoiOCIsInJvbCI6IjQiLCJub20iOiJEeWxhbiJ9.CxN62Oz5XAlrKPpCfaKlsU831PZ0cr8XC49bDJ70SN0
+
+
+GET {{uri}}/1
+
+
+
+###
+
+POST {{uri}}
+Content-Type: application/json
+Authorization: {{token}}
+
+	{
+		"idOficinista": 777,
+		"nombre": "Carlos",
+		"apellido1": "Palacios",
+		"apellido2": "Morales",
+		"telefono": "68888",
+		"celular": "99999",
+		"direccion": "San Jose",
+		"correo": "carl100@gmail.com"
+	}
+

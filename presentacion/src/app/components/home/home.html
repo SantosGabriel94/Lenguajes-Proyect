@@ -1,0 +1,120 @@
+<div class="home-container mat-typography">
+  <mat-card class="welcome-card">
+    <mat-card-header>
+      <mat-card-title>
+        <span class="brand">RepairWorks</span>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>En RepairWorks trabajamos para ti.<br>
+      Te presentamos los diferentes roles que forman parte de nuestro sistema, pensados para hacer tu vida más fácil y tu experiencia más eficiente.</p>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="quick-actions">
+    <mat-card class="action-card">
+      <mat-icon>manage_accounts</mat-icon>
+      <span>Administradores</span>
+    </mat-card>
+    <mat-card class="action-card">
+      <mat-icon>contacts</mat-icon>
+      <span>Oficinistas</span>
+    </mat-card>
+    <mat-card class="action-card">
+      <mat-icon>engineering</mat-icon>
+      <span>Técnicos</span>
+    </mat-card>
+    <mat-card class="action-card">
+      <mat-icon>groups</mat-icon>
+      <span>Clientes</span>
+    </mat-card>
+    <mat-card class="action-card">
+      <mat-icon>handyman</mat-icon>
+      <span>Casos</span>
+    </mat-card>
+    <mat-card class="action-card">
+      <mat-icon>devices_other</mat-icon>
+      <span>Artefactos</span>
+    </mat-card>
+  </div>
+</div>
+
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1e3c72, #2a5298); /* azul elegante */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 1rem;
+    min-height: 100vh;
+    color: #ffffff;
+  }
+
+  .welcome-card {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 2rem;
+    text-align: center;
+    background: #ffffff;
+    color: #333333;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    border-radius: 16px;
+    padding: 2rem;
+  }
+
+  .brand {
+    color: #1e3c72;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+
+  .welcome-card p {
+    margin: 1rem 0 0 0;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .quick-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .action-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: #1e3c72;
+    font-weight: 500;
+  }
+
+  .action-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+  }
+
+  .action-card mat-icon {
+    font-size: 36px;
+    margin-bottom: 8px;
+    color: #1e3c72;
+  }
+
+  .action-card span {
+    font-size: 15px;
+    text-align: center;
+  }
+</style>
